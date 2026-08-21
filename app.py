@@ -222,27 +222,27 @@ def add_one_{filename}():
         user = query_db('select * from {filename}')
 
 
-    file_pointer = open("./samplescoreexample.ly")
-    contents = file_pointer.read()
-    contents=contents.replace("KEYSCOREHERE", request.form["key_signature"].replace(" "," \")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["mymusic"])
-    file_pointer = open("./scores/myscore_mymusic_sample_"+mylastrowid+".ly", "w")
-    file_pointer.write(contents)
-    file_pointer.close()
-    file_pointer = open("./scores/myscore_mymusic_sample_"+mylastrowid+".html", "w")
-    file_pointer.write("<lilypond staffsize=34>"+contents+"</lilypond>")
-    file_pointer.close()
-    subprocess.run(["lilypond-book", "scores/myscore_mymusic_sample_1.html", "-f", "html", "--output", "scores/samplescoremyscore_mymusic"]) 
+        file_pointer = open("./samplescoreexample.ly")
+        contents = file_pointer.read()
+        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"].replace(" "," \")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["mymusic"])
+        file_pointer = open("./scores/myscore_mymusic_sample_"+mylastrowid+".ly", "w")
+        file_pointer.write(contents)
+        file_pointer.close()
+        file_pointer = open("./scores/myscore_mymusic_sample_"+mylastrowid+".html", "w")
+        file_pointer.write("<lilypond staffsize=34>"+contents+"</lilypond>")
+        file_pointer.close()
+        subprocess.run(["lilypond-book", "scores/myscore_mymusic_sample_1.html", "-f", "html", "--output", "scores/samplescoremyscore_mymusic"]) 
 
-    try:
-        f= open("scores/samplescoremyscore_mymusic/myscore_mymusic_sample_1.html")
-        s = f.read()
-        soup = BeautifulSoup(s)
+        try:
+            f= open("scores/samplescoremyscore_mymusic/myscore_mymusic_sample_1.html")
+            s = f.read()
+            soup = BeautifulSoup(s)
 
-        picvalue={'pic': soup.find_all('img')[0].get("src")}
-    except:
-        picvalue={'pic': ""}
+            picvalue={'pic': soup.find_all('img')[0].get("src")}
+        except:
+            picvalue={'pic': ""}
 
-    hello_there = query_db("update myscore set pic=:pic",picvalue, one=True)
+        hello_there = query_db("update myscore set pic=:pic",picvalue, one=True)
 
         return render_template("myscoreform.html", myscores=user, one_user=one_user, the_title="add new myscore", touslesuser=touslesuser)
 

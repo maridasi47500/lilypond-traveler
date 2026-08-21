@@ -67,29 +67,29 @@ while index < (len(items)):
         myfieldtype="checkbox"
     if staff == "yes":
         mylastrowid+="""
-    file_pointer = open("./samplescoreexample.ly")
-    contents = file_pointer.read()
-    contents=contents.replace("KEYSCOREHERE", request.form["key_signature"].replace(" "," \\")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["{columnname}"])
-    file_pointer = open("./scores/{tablename}_{columnname}_sample_"+mylastrowid+".ly", "w")
-    file_pointer.write(contents)
-    file_pointer.close()
-    file_pointer = open("./scores/{tablename}_{columnname}_sample_"+mylastrowid+".html", "w")
-    file_pointer.write("<lilypond staffsize=34>"+contents+"</lilypond>")
-    file_pointer.close()
-    subprocess.run(["lilypond-book", "scores/{tablename}_{columnname}_sample_1.html", "-f", "html", "--output", "scores/samplescore{tablename}_{columnname}"]) 
+        file_pointer = open("./samplescoreexample.ly")
+        contents = file_pointer.read()
+        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"].replace(" "," \\")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["{columnname}"])
+        file_pointer = open("./scores/{tablename}_{columnname}_sample_"+mylastrowid+".ly", "w")
+        file_pointer.write(contents)
+        file_pointer.close()
+        file_pointer = open("./scores/{tablename}_{columnname}_sample_"+mylastrowid+".html", "w")
+        file_pointer.write("<lilypond staffsize=34>"+contents+"</lilypond>")
+        file_pointer.close()
+        subprocess.run(["lilypond-book", "scores/{tablename}_{columnname}_sample_1.html", "-f", "html", "--output", "scores/samplescore{tablename}_{columnname}"]) 
 
-    try:
-        f= open("scores/samplescore{tablename}_{columnname}/{tablename}_{columnname}_sample_1.html")
-        s = f.read()
-        soup = BeautifulSoup(s)
+        try:
+            f= open("scores/samplescore{tablename}_{columnname}/{tablename}_{columnname}_sample_1.html")
+            s = f.read()
+            soup = BeautifulSoup(s)
 """.format(tablename=filename,columnname=paramname)
         mylastrowid+="""
-        picvalue={'pic': soup.find_all('img')[0].get("src")}
-    except:
-        picvalue={'pic': ""}
+            picvalue={'pic': soup.find_all('img')[0].get("src")}
+        except:
+            picvalue={'pic': ""}
 """
         mylastrowid+="""
-    hello_there = query_db("update {tablename} set pic=:pic",picvalue, one=True)
+        hello_there = query_db("update {tablename} set pic=:pic",picvalue, one=True)
 """.format(tablename=filename,columnname=paramname)
     if hasfile == "yes":
       myfieldtype="file"
