@@ -231,10 +231,10 @@ def add_one_myscore():
         file_pointer = open("./scores/myscore_mymusic_sample_"+mylastrowid+".html", "w")
         file_pointer.write("<lilypond staffsize=34>"+contents+"</lilypond>")
         file_pointer.close()
-        subprocess.run(["lilypond-book", "scores/myscore_mymusic_sample_1.html", "-f", "html", "--output", "scores/samplescoremyscore_mymusic"]) 
+        subprocess.run(["lilypond-book", "scores/myscore_mymusic_sample_"+mylastrowid+".html", "-f", "html", "--output", "scores/samplescoremyscore_mymusic"]) 
 
         try:
-            f= open("scores/samplescoremyscore_mymusic/myscore_mymusic_sample_1.html")
+            f= open("scores/samplescoremyscore_mymusic/myscore_mymusic_sample_"+mylastrowid+".html")
             s = f.read()
             soup = BeautifulSoup(s)
 
