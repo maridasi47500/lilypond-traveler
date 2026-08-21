@@ -76,10 +76,10 @@ while index < (len(items)):
         file_pointer = open("./scores/{tablename}_{columnname}_sample_"+mylastrowid+".html", "w")
         file_pointer.write("<lilypond staffsize=34>"+contents+"</lilypond>")
         file_pointer.close()
-        subprocess.run(["lilypond-book", "scores/{tablename}_{columnname}_sample_"+mylastrowid+".html", "-f", "html", "--output", "scores/samplescore{tablename}_{columnname}"]) 
+        subprocess.run(["lilypond-book", "scores/{tablename}_{columnname}_sample_"+mylastrowid+".html", "-f", "html", "--output", "scores/samplescore{tablename}_{columnname}"+mylastrowid]) 
 
         try:
-            f= open("scores/samplescore{tablename}_{columnname}/{tablename}_{columnname}_sample_"+mylastrowid+".html")
+            f= open("scores/samplescore{tablename}_{columnname}"+mylastrowid+"/{tablename}_{columnname}_sample_"+mylastrowid+".html")
             s = f.read()
             soup = BeautifulSoup(s)
 """.format(tablename=filename,columnname=paramname)
