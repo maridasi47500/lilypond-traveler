@@ -28,8 +28,8 @@ def hello_world():
     one_user = query_db('select * from contacts where first_name = ?',
                 [the_username], one=True)
     return render_template("hey.html", users=user, one_user=one_user, the_title="my title")
-@app.route("/add_one_{filename}", methods=["GET","POST"])
-def add_one_{filename}():
+@app.route("/add_one_user", methods=["GET","POST"])
+def add_one_user():
 
     if request.method == 'POST':
 
@@ -39,9 +39,9 @@ def add_one_{filename}():
 
         touslescountry= query_db("select * from country")
 
-        one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
+        one_user = query_db("insert into user (username,email,password,phone,country_id) values (:username,:email,:password,:phone,:country_id)",hey, one=True)
         mylastrowid=one_user["myid"]
-        user = query_db('select * from {filename}')
+        user = query_db('select * from user')
 
 
         last_user = query_db("select * from user where email = ? and password = ?",[hey["email"], hey["password"]], one=True)
@@ -81,8 +81,8 @@ def user_login():
         except:
             return render_template("userlogin.html")
     return render_template("userlogin.html")
-@app.route("/add_one_{filename}", methods=["GET","POST"])
-def add_one_{filename}():
+@app.route("/add_one_gem_quest", methods=["GET","POST"])
+def add_one_gem_quest():
 
     if request.method == 'POST':
 
@@ -90,9 +90,9 @@ def add_one_{filename}():
         hey=dict(request.form)
 
 
-        one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
+        one_user = query_db("insert into gem_quest (place_name,lat,lon) values (:place_name,:lat,:lon)",hey, one=True)
         mylastrowid=one_user["myid"]
-        user = query_db('select * from {filename}')
+        user = query_db('select * from gem_quest')
 
 
         return render_template("gem_questform.html", gem_quests=user, one_user=one_user, the_title="add new gem_quest")
@@ -102,8 +102,8 @@ def add_one_{filename}():
     one_user = query_db("select * from gem_quest limit 1", one=True)
     return render_template("gem_questform.html", gem_quests=user, one_user=one_user, the_title="add new gem_quest")
 
-@app.route("/add_one_{filename}", methods=["GET","POST"])
-def add_one_{filename}():
+@app.route("/add_one_seasonal_sport", methods=["GET","POST"])
+def add_one_seasonal_sport():
 
     if request.method == 'POST':
 
@@ -111,9 +111,9 @@ def add_one_{filename}():
         hey=dict(request.form)
 
 
-        one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
+        one_user = query_db("insert into seasonal_sport (name,season) values (:name,:season)",hey, one=True)
         mylastrowid=one_user["myid"]
-        user = query_db('select * from {filename}')
+        user = query_db('select * from seasonal_sport')
 
 
         return render_template("seasonal_sportform.html", seasonal_sports=user, one_user=one_user, the_title="add new seasonal_sport")
@@ -123,8 +123,8 @@ def add_one_{filename}():
     one_user = query_db("select * from seasonal_sport limit 1", one=True)
     return render_template("seasonal_sportform.html", seasonal_sports=user, one_user=one_user, the_title="add new seasonal_sport")
 
-@app.route("/add_one_{filename}", methods=["GET","POST"])
-def add_one_{filename}():
+@app.route("/add_one_place_visit", methods=["GET","POST"])
+def add_one_place_visit():
 
     if request.method == 'POST':
 
@@ -138,9 +138,9 @@ def add_one_{filename}():
 
         touslesseasonal_sport= query_db("select * from seasonal_sport")
 
-        one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
+        one_user = query_db("insert into place_visit (gem_quest_id,user_id,seasonal_sport_id) values (:gem_quest_id,:user_id,:seasonal_sport_id)",hey, one=True)
         mylastrowid=one_user["myid"]
-        user = query_db('select * from {filename}')
+        user = query_db('select * from place_visit')
 
 
         return render_template("place_visitform.html", place_visits=user, one_user=one_user, the_title="add new place_visit", touslesgem_quest=touslesgem_quest, touslesuser=touslesuser, touslesseasonal_sport=touslesseasonal_sport)
@@ -156,8 +156,8 @@ def add_one_{filename}():
     one_user = query_db("select * from place_visit limit 1", one=True)
     return render_template("place_visitform.html", place_visits=user, one_user=one_user, the_title="add new place_visit", touslesgem_quest=touslesgem_quest, touslesuser=touslesuser, touslesseasonal_sport=touslesseasonal_sport)
 
-@app.route("/add_one_{filename}", methods=["GET","POST"])
-def add_one_{filename}():
+@app.route("/add_one_panomaric_view", methods=["GET","POST"])
+def add_one_panomaric_view():
 
     if request.method == 'POST':
 
@@ -167,9 +167,9 @@ def add_one_{filename}():
 
         touslesgem_quest= query_db("select * from gem_quest")
 
-        one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
+        one_user = query_db("insert into panomaric_view (description,gem_quest_id) values (:description,:gem_quest_id)",hey, one=True)
         mylastrowid=one_user["myid"]
-        user = query_db('select * from {filename}')
+        user = query_db('select * from panomaric_view')
 
 
         return render_template("panomaric_viewform.html", panomaric_views=user, one_user=one_user, the_title="add new panomaric_view", touslesgem_quest=touslesgem_quest)
@@ -181,8 +181,8 @@ def add_one_{filename}():
     one_user = query_db("select * from panomaric_view limit 1", one=True)
     return render_template("panomaric_viewform.html", panomaric_views=user, one_user=one_user, the_title="add new panomaric_view", touslesgem_quest=touslesgem_quest)
 
-@app.route("/add_one_{filename}", methods=["GET","POST"])
-def add_one_{filename}():
+@app.route("/add_one_job_offer", methods=["GET","POST"])
+def add_one_job_offer():
 
     if request.method == 'POST':
 
@@ -192,9 +192,9 @@ def add_one_{filename}():
 
         touslesuser= query_db("select * from user")
 
-        one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
+        one_user = query_db("insert into job_offer (name,description,user_id) values (:name,:description,:user_id)",hey, one=True)
         mylastrowid=one_user["myid"]
-        user = query_db('select * from {filename}')
+        user = query_db('select * from job_offer')
 
 
         return render_template("job_offerform.html", job_offers=user, one_user=one_user, the_title="add new job_offer", touslesuser=touslesuser)
@@ -206,8 +206,8 @@ def add_one_{filename}():
     one_user = query_db("select * from job_offer limit 1", one=True)
     return render_template("job_offerform.html", job_offers=user, one_user=one_user, the_title="add new job_offer", touslesuser=touslesuser)
 
-@app.route("/add_one_{filename}", methods=["GET","POST"])
-def add_one_{filename}():
+@app.route("/add_one_myscore", methods=["GET","POST"])
+def add_one_myscore():
 
     if request.method == 'POST':
 
@@ -217,9 +217,9 @@ def add_one_{filename}():
 
         touslesuser= query_db("select * from user")
 
-        one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
+        one_user = query_db("insert into myscore (mymusic,pic,user_id,time_signature,key_signature,time_signature) values (:mymusic,:pic,:user_id,:time_signature,:key_signature,:time_signature)",hey, one=True)
         mylastrowid=one_user["myid"]
-        user = query_db('select * from {filename}')
+        user = query_db('select * from myscore')
 
 
         file_pointer = open("./samplescoreexample.ly")

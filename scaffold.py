@@ -157,15 +157,15 @@ def add_one_{filename}():
     if request.method == 'POST':
 
         the_username = "anonyme"
-        hey=dict(request.form)"""
-addone+=requestfiles
-addone+=sqltousles
+        hey=dict(request.form)""".format(filename=filename, mysession=mysession,columns=columns,values=values,references=references)
+addone+=requestfiles.format(filename=filename, mysession=mysession,columns=columns,values=values,references=references)
+addone+=sqltousles.format(filename=filename, mysession=mysession,columns=columns,values=values,references=references)
 
 addone+="""
         one_user = query_db("insert into {filename} {columns} values {values}",hey, one=True)
         mylastrowid=one_user["myid"]
         user = query_db('select * from {filename}')
-"""
+""".format(filename=filename, mysession=mysession,columns=columns,values=values,references=references)
 addone+=mylastrowid
 if filename == "user":
     addone+="""
