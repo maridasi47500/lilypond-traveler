@@ -62,3 +62,12 @@ create table if not exists job_offer(
             description text,
             user_id text
       , created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP                );
+create table if not exists myscore(
+        id integer primary key autoincrement,
+        mymusic text,
+            pic text,
+            user_id text,
+            time_signature text,
+            key_signature text,
+            time_signature text
+      , created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP                );

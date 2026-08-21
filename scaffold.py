@@ -212,7 +212,8 @@ def {filename}_login():
 
 
 with open("app.py", "a") as myfile:
-    myfile.write(addone.format(filename=filename,columns=columns,values=values))
+    #myfile.write(addone.format(filename=filename,columns=columns,values=values))
+    myfile.write(addone)
 with open("schema.sql", "a") as myfile:
     myfile.write(mystr.format(filename=filename))
 with open("templates/hey.html", "a") as myfile:
