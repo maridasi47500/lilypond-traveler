@@ -82,10 +82,14 @@ while index < (len(items)):
         f= open("scores/samplescore{tablename}_{columnname}/{tablename}_{columnname}_sample_1.html")
         s = f.read()
         soup = BeautifulSoup(s)
+""".format(tablename=filename,columnname=paramname)
+        mylastrowid+="""
         picvalue={'pic': soup.find_all('img')[0].get("src")}
     except:
         picvalue={'pic': ""}
-    hello_there = query_db("update {filename} set pic=:pic",picvalue, one=True)
+"""
+        mylastrowid+="""
+    hello_there = query_db("update {tablename} set pic=:pic",picvalue, one=True)
 """.format(tablename=filename,columnname=paramname)
     if hasfile == "yes":
       myfieldtype="file"
