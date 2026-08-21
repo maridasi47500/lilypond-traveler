@@ -69,7 +69,7 @@ while index < (len(items)):
         mylastrowid+="""
         file_pointer = open("./samplescoreexample.ly")
         contents = file_pointer.read()
-        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"]).replace(" "," \\")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["{columnname}"])
+        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"].replace(" "," \\")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["{columnname}"])
         file_pointer = open("./scores/{tablename}_{columnname}_sample_"+mylastrowid+".ly", "w")
         file_pointer.write(contents)
         file_pointer.close()

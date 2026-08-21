@@ -68,6 +68,5 @@ create table if not exists myscore(
             pic text,
             user_id text,
             time_signature text,
-            key_signature text,
-            time_signature text
+            key_signature text
       , created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP                );

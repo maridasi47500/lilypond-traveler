@@ -217,14 +217,14 @@ def add_one_myscore():
 
         touslesuser= query_db("select * from user")
 
-        one_user = query_db("insert into myscore (mymusic,pic,user_id,time_signature,key_signature,time_signature) values (:mymusic,:pic,:user_id,:time_signature,:key_signature,:time_signature)",hey, one=True)
+        one_user = query_db("insert into myscore (mymusic,pic,user_id,time_signature,key_signature) values (:mymusic,:pic,:user_id,:time_signature,:key_signature)",hey, one=True)
         mylastrowid=one_user["myid"]
         user = query_db('select * from myscore')
 
 
         file_pointer = open("./samplescoreexample.ly")
         contents = file_pointer.read()
-        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"]).replace(" "," \")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["mymusic"])
+        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"].replace(" "," \")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["mymusic"])
         file_pointer = open("./scores/myscore_mymusic_sample_"+mylastrowid+".ly", "w")
         file_pointer.write(contents)
         file_pointer.close()
