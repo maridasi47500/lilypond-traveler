@@ -3,7 +3,7 @@
 
 %%http://www.gnu.org/software/denemo/
 
-\version "2.22"
+\version "2.20.0"
 
 CompactChordSymbols = {}
 #(define DenemoTransposeStep 0)

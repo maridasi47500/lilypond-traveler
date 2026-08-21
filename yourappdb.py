@@ -14,7 +14,7 @@ def query_db(query, args=(), one=False):
     mydb = get_db()
     cur = mydb.execute(query, args)
     insert=""
-    if "insert into" in query:
+    if "insert into" in query or ("update " in query and "set" in query):
         mydb.commit()
         insert="yes"
 
