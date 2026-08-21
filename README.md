@@ -1,4 +1,6 @@
 🌸 Lilypond Traveler is a creative, exploratory app where you choose your own path:
+![alt text](hello.png)
+
 
     🌍 Travel anywhere to enjoy panoramic views, take part in seasonal sports like a gem quest, or even search for nearby job opportunities while on the move.
 
