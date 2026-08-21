@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block content %}<form  enctype="multipart/form-data" method="POST"><div class="field"><label for="somefielddescription">description</label><input type="text" id="somefielddescription" name="description"/></div>
+<div class="field"><label for="somefieldgem_quest_id">gem_quest_id</label><select id="somefieldgem_quest_id" name="gem_quest_id">
+{% for somegem_quest in touslesgem_quest %}
+<option value="{{ somegem_quest['id'] }}">{{ somegem_quest['name'] }}</option>{% endfor %}
+</select></div><div class="actions"><input type="submit"/></div></form>{% for x in panomaric_views %}{{x["description"] }}{% endfor %}{% endblock %}{% block liens %}<a href="/">bienvenue</a><a href="/add_one_panomaric_view"> add one panomaric_view</a>{% endblock %}
