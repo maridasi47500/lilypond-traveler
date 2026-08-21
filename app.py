@@ -224,7 +224,7 @@ def add_one_myscore():
 
         file_pointer = open("./samplescoreexample.ly")
         contents = file_pointer.read()
-        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"].replace(" "," \")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["mymusic"])
+        contents=contents.replace("KEYSCOREHERE", request.form["key_signature"]).replace(" "," \")).replace("TIMESCOREHERE", request.form["time_signature"]).replace("CONTENTSCOREHERE", request.form["mymusic"])
         file_pointer = open("./scores/myscore_mymusic_sample_"+mylastrowid+".ly", "w")
         file_pointer.write(contents)
         file_pointer.close()
