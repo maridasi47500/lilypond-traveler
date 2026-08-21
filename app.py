@@ -40,7 +40,7 @@ def add_one_user():
         touslescountry= query_db("select * from country")
 
         one_user = query_db("insert into user (username,email,password,phone,country_id) values (:username,:email,:password,:phone,:country_id)",hey, one=True)
-        mylastrowid=one_user["myid"]
+        mylastrowid=str(one_user["myid"])
         user = query_db('select * from user')
 
 
@@ -91,7 +91,7 @@ def add_one_gem_quest():
 
 
         one_user = query_db("insert into gem_quest (place_name,lat,lon) values (:place_name,:lat,:lon)",hey, one=True)
-        mylastrowid=one_user["myid"]
+        mylastrowid=str(one_user["myid"])
         user = query_db('select * from gem_quest')
 
 
@@ -112,7 +112,7 @@ def add_one_seasonal_sport():
 
 
         one_user = query_db("insert into seasonal_sport (name,season) values (:name,:season)",hey, one=True)
-        mylastrowid=one_user["myid"]
+        mylastrowid=str(one_user["myid"])
         user = query_db('select * from seasonal_sport')
 
 
@@ -139,7 +139,7 @@ def add_one_place_visit():
         touslesseasonal_sport= query_db("select * from seasonal_sport")
 
         one_user = query_db("insert into place_visit (gem_quest_id,user_id,seasonal_sport_id) values (:gem_quest_id,:user_id,:seasonal_sport_id)",hey, one=True)
-        mylastrowid=one_user["myid"]
+        mylastrowid=str(one_user["myid"])
         user = query_db('select * from place_visit')
 
 
@@ -168,7 +168,7 @@ def add_one_panomaric_view():
         touslesgem_quest= query_db("select * from gem_quest")
 
         one_user = query_db("insert into panomaric_view (description,gem_quest_id) values (:description,:gem_quest_id)",hey, one=True)
-        mylastrowid=one_user["myid"]
+        mylastrowid=str(one_user["myid"])
         user = query_db('select * from panomaric_view')
 
 
@@ -193,7 +193,7 @@ def add_one_job_offer():
         touslesuser= query_db("select * from user")
 
         one_user = query_db("insert into job_offer (name,description,user_id) values (:name,:description,:user_id)",hey, one=True)
-        mylastrowid=one_user["myid"]
+        mylastrowid=str(one_user["myid"])
         user = query_db('select * from job_offer')
 
 
@@ -218,7 +218,7 @@ def add_one_myscore():
         touslesuser= query_db("select * from user")
 
         one_user = query_db("insert into myscore (mymusic,pic,user_id,time_signature,key_signature) values (:mymusic,:pic,:user_id,:time_signature,:key_signature)",hey, one=True)
-        mylastrowid=one_user["myid"]
+        mylastrowid=str(one_user["myid"])
         user = query_db('select * from myscore')
 
 
